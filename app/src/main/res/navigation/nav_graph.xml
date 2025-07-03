@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signInFragment">
+
+    <!-- 🔐 SIGN IN -->
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.project_uas.view.SignInFragment"
+        android:label="Sign In">
+        <action
+            android:id="@+id/action_signIn_to_signUp"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signIn_to_budgetListFragment"
+            app:destination="@id/budgetListFragment" />
+    </fragment>
+
+    <!-- 🟩 SIGN UP -->
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.project_uas.view.SignUpFragment"
+        android:label="Sign Up">
+        <action
+            android:id="@+id/action_signUp_to_signIn"
+            app:destination="@id/signInFragment" />
+    </fragment>
+
+    <!-- 📋 BUDGET LIST -->
+    <fragment
+        android:id="@+id/budgetListFragment"
+        android:name="com.example.project_uas.view.BudgetListFragment"
+        android:label="Budget List">
+        <action
+            android:id="@+id/action_budgetListFragment_to_addEditBudgetFragment"
+            app:destination="@id/addEditBudgetFragment" />
+    </fragment>
+
+    <!-- ✏️ ADD/EDIT BUDGET -->
+    <fragment
+        android:id="@+id/addEditBudgetFragment"
+        android:name="com.example.project_uas.view.AddEditBudgetFragment"
+        android:label="Add/Edit Budget">
+        <argument
+            android:name="budgetId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <!-- 💰 EXPENSE LIST -->
+    <fragment
+        android:id="@+id/expenseListFragment"
+        android:name="com.example.project_uas.view.ExpenseListFragment"
+        android:label="Expense List">
+        <argument
+            android:name="budgetId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_expenseListFragment_to_addEditExpenseFragment"
+            app:destination="@id/addEditExpenseFragment">
+            <argument
+                android:name="budgetId"
+                app:argType="integer" />
+            <argument
+                android:name="expenseId"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <!-- ✏️ ADD/EDIT EXPENSE -->
+    <fragment
+        android:id="@+id/addEditExpenseFragment"
+        android:name="com.example.project_uas.view.AddEditExpenseFragment"
+        android:label="Add/Edit Expense">
+        <argument
+            android:name="budgetId"
+            app:argType="integer" />
+        <argument
+            android:name="expenseId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- 📊 REPORTS -->
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.project_uas.view.ReportsFragment"
+        android:label="Reports" />
+
+    <!-- 👤 PROFILE -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.project_uas.view.ProfileFragment"
+        android:label="Profile">
+
+        <!-- ✅ Tambahkan ini -->
+        <action
+            android:id="@+id/action_profileFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+</navigation>
